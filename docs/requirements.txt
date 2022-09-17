@@ -1,0 +1,104 @@
+1. Support two players
+    + red and green links
+		+ red and green routes
+		+ output links in the same format as they are input
+
+2. Route changes
+    + red routes can use red and uncolored links
+		+ green routes can use green and uncolored links
+		+ uncolored routes can only use uncolored links
+
+3. Handle improper input
+    + output line with an error
+		+ too many tokens
+		+ too few tokens
+		+ player colors other than red or green
+		+ invalid distance
+
+4. Add Unit tests for any new classes
+
+Bonus:  
+    Learn about Factory pattern
+    Implement factory pattern for links
+
+Add a factory
+    + Builds links given the input
+    + Allows easy addition of new links
+		+ Separate link and factory classes
+
+Extensions designed 10% (UML diagram)
+Extensions implemented 20%
+Extensions tested 20%
+Refactorings described (4) 10%
+Refactorings implemented (2) 10%
+Code Clarity 10%
+Document Clarity 10%
+Factory 10% Bonus
+
+Name of Developer: Brijesh Varsani / B00882318
+
+Refactoring:
+
+0. Issue Identified: As suggested in the assignment instruction the factory
+                     patter will be the better approach to perform the
+                     functionalities of the game.
+   Description of fix: implemented the LinkFactory class to improve the
+                       creation of Values in value. In which all the classes
+                       implements interface and have abstract class (Link).
+                       Link has two subclasses.
+
+1. File: City.java, Link.java
+   Location (method/approx. line #):
+   Issue Identified: all classes depends on the concrete class Link, city.
+                     This violets the dependency inversion principle.
+   Description of fix: As per the dependency inversion principle, all classes
+                       should have Interface on which all classes will depend.
+                       Made interface ILink , Icity.
+   Implemented: Yes (Completely, All test pass)
+
+2. File:
+   Location (method/approx. line #): Link.java
+   Issue Identified: Class should have only one role according to single
+                     responsibility principle (SRP). It violates SRP.
+   Description of fix: Made two subclasses RegularLink and ColouredLink to\
+                       handle type of link (different links)
+   Implemented: Yes (Completely, All test pass)
+
+3. File: City.java
+   Location (method/approx. line #): 97 , 145
+   Issue Identified: Instead of checking colour of valid player everytime
+                     there should be a method to check valid link. Because
+                     if criteria changes than we have to make changes at
+                     every place which is not the good practise.
+   Description of fix: made isValidLink to check link if link is valid or
+                       not. we need to change this method only if criteria
+                       changes in the future.
+   Implemented: Yes (Completely, All test pass)
+
+4. File: Link.java , City.java , RouteCost.java , CityComparator.java , CityTest.java
+         LinkTest.java , CityComparatorTest.java
+   Location (method/approx. line #): Every place where we uses objects of class City , Link
+   Issue Identified: If uses the member variables of concrete class City and Link. This violates
+                     the principle DIP.
+   Description of fix: In all method and variables change the type of memeber variable to ICity,
+                       ILink instead of City and Link respectively.
+   Implemented: Yes (Completely, All test pass)
+
+5. File: RouteCost.java
+   Location: 58 , 37 Line approx
+   Issue identified: Checking valid colour every time. (like it should either
+                     be red or green (for now)) Which can create problem in
+                     future if they want to add more players. We need to add
+                     many cases in if condition to check if the colour is valid
+                     or not.
+   Description of fix:  There can be two fixes
+                     Fix 1: Make arraylist to add all the players. and just check if
+                            list.contains(colour)
+                     Implemented: Yes (Completely, All test pass)
+
+                     Fix 2: This I think better practise. We can create enum class
+                            of the players playing the game. We just need to add player
+                            object in enum class. We then can check the colour as follows
+                            colour instanceof (enum class).
+                     Implemented: No. I just tried.
+

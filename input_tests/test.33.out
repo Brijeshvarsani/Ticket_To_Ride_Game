@@ -1,0 +1,17 @@
+The rail network consists of:
+Atlanta 5 Miami red
+Atlanta 1 Nashville red
+Chicago 3 Duluth red
+Chicago 2 Saint_Louis red
+Denver 4 Helena green
+Denver 4 Oklahoma_City
+Denver 2 Santa_Fe green
+Duluth 4 Winnipeg red
+El_Paso 2 Santa_Fe green
+Helena 6 Seattle green
+Little_Rock 3 New_Orleans
+Little_Rock 2 Oklahoma_City
+Miami 6 New_Orleans
+Nashville 2 Saint_Louis red
+Seattle 1 Vancouver green
+The total cost is: 47
